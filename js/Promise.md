@@ -77,3 +77,7 @@
 
    规范: https://www.ituring.com.cn/article/66566#
 
+详细的例子：https://github.com/YvetteLau/Blog/issues/2
+
+Demo： https://github.com/MHwishes/js-demos
+
