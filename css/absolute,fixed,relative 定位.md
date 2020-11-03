@@ -33,9 +33,9 @@
 
 ### 一、position 的四个值：static、relative、absolute、fixed。
 
-绝对定位：absolute 和 fixed 统称为绝对定位
+绝对定位：absolute 和 fixed 统称为绝对定位（脱离文档流）
 
-相对定位：relative
+相对定位：relative （不脱离文档流）
 
 默认值：static
 
@@ -56,4 +56,27 @@
 1. 用户只给元素指定了absolute，未指定left/top/right/bottom。此时absolute元素的左上角定位点位置就是该元素正常文档流里的位置。
 2. 用户给absolute元素指定了left/right，top/bottom，由于没有position:static以外的父元素，此时absolute元素可以去任意它想去的地方，天空才是它的极限，相对body定位。
 3. relative主要用于限制absolute，用relative可以有效限制子absolute元素的拉伸平铺范围
+
+### 四. fixed 定位和absolute定位的区别
+
+1.  共同点：都会脱离当前文档流，触发BFC
+
+2. 相对定位的元素不同：absolute是相对于离它最近的有定位的父元素进行定位（如果没有定位的父元素则相对于浏览器窗口）；fixed是相对于浏览器窗口定位, 相对于根元素，不受父元素的影响
+3. 在没有滚动条的情况下两者其实没有差异。但是在有滚动条后，fixed始终会在定好的位置不动，而absolute会随参照对象元素的宽高变化为移动。
+
+3. 一般fixed用在遮盖层和固定在页面某个位置（固定在顶端的菜单栏 / 弹出框居中显示 / 页面两侧的广告位等）。
+
+
+
+### 五.  position: sticky
+
+`position: sticky` 可以看出是`position:relative`和`position:fixed`的结合体.
+
+粘性定位是相对定位和固定定位的混合。元素在跨越特定阈值前为相对定位，之后为固定定位。
+
+Sticky 不会脱离文档流
+
+
+
+
 
