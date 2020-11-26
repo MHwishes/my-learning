@@ -51,3 +51,5 @@ Binder 的主要作用是替代之前 Controller 和 Presenter 中 view 与 mode
 ### 参考文档
 
 1. http://www.isjs.cn/?p=1037
+2. Demo 地址： https://github.com/MHwishes/js-demos/tree/main/mvvm
+
