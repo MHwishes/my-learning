@@ -1,6 +1,6 @@
 问题：如何实现Rate type的阴影遮罩效果?
 
-![image-20201018094011450](/Users/hma/Library/Application Support/typora-user-images/image-20201018094011450.png)
+![image-20201018094011450](../images/image-20201018094011450.png)
 
 
 

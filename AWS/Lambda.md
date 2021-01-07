@@ -3,7 +3,7 @@
    ```
    aws lambda create-function --function-name my-function-mh-cli \
    --zip-file fileb://function.zip --handler index.handler --runtime nodejs12.x \
-   --role arn:aws:iam::494526681395:role/lambda-s3-role-mh
+   --role arn:aws:iam::xxxxxx:role/lambda-s3-role-mh
    ```
 
 
@@ -30,7 +30,7 @@
 
 ```shell
 aws sns publish --message file://message.txt --subject Test \
---topic-arn arn:aws:sns:ap-southeast-1:494526681395:lambda-sns-topic-mh
+--topic-arn arn:aws:sns:ap-southeast-1:xxxx:lambda-sns-topic-mh
 ```
 
 
