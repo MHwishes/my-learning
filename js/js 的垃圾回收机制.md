@@ -245,7 +245,7 @@ Mark-Sweep，是标记清除的意思。它主要分为标记和清除两个阶�
 
 3. 没有清理的DOM元素引用
 
-   ```
+   ```js
    var refA = document.getElementById('refA');
    document.body.removeChild(refA); // dom删除了
    console.log(refA, "refA");  // 但是还存在引用
