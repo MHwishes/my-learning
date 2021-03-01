@@ -70,6 +70,34 @@ console.log(Object.getPrototypeOf(student) === Person.prototype); // true
 
    每当代码读取对象的某个属性时，首先会在对象本身搜索这个属性，如果找到该属性就返回该属性的值，如果没有找到，则继续搜索该对象对应的原型对象，以此类推下去。
 
+   ```js
+   function Person(name) {
+     this.name = name;
+   }
+   Person.prototype.sayHi = function() {
+     alert('Hi, I am ' + this.name);
+   }
+   
+   var fred = new Person('Fred'); // 设置 `fred.__proto__` 为 `Person.prototype`
+   ```
+
+   那个 `__proto__` 链才是 JavaScript 用来查找属性的：
+
+   ```js
+   fred.sayHi();
+   // 1. fred 有 sayHi 属性吗？不。
+   // 2. fred.__proto__ 有 sayHi 属性吗？是的，调用它！
+   
+   fred.toString();
+   // 1. fred 有 toString 属性吗？不。
+   // 2. fred.__proto__ 有 toString 属性吗？不。
+   // 3. fred.__proto__.__proto__ 有 toString 属性吗？是的，调用它！
+   ```
+
+   在实战中，你应该几乎永远不需要直接在代码里动到 `__proto__` ，除非你在调试和原型链相关的问题。如果你想让某样东西在 `fred.__proto__` 上可用，你应该把它放在 `Person.prototype`，至少它最初是这么设计的。
+
+   
+
 2. 属性的判断
 
    既然一个属性既可能是实例本身的，也有可能是其原型对象的，那么我们该如何来判断呢？
@@ -136,6 +164,8 @@ var suber = new Sub();
 ![image-20200831193752847](../images/image-20200831193752847.png)
 
 注意：Object.prototype 就是原型链的终点了，我们可以试着打印一下 `Object.prototype.__proto__`，我们会发现返回的是一个 null 空对象，这就意味着原型链的结束。
+
+
 
 
 
@@ -206,24 +236,4 @@ two,capture(顺序执行，注意逗号不是间隔，是输出内容。)
 4. 任务队列可以分为宏任务对列和微任务对列，当前执行栈中的事件执行完毕后，js 引擎首先会判断微任务对列中是否有任务可以执行，如果有就将微任务队首的事件压入栈中执行。
 
 5. 当微任务对列中的任务都执行完成后再去判断宏任务对列中的任务。
-
-
-
-
-# 浏览器事件循环机制（event loop）
-
-浏览器中很多异步行为都是由浏览器新开一个线程去完成，一个浏览器至少实现三个常驻线程：
-
-- JS引擎线程:  专门处理JavaScript脚本的虚拟机，一般会附带在网页浏览器之中,eg V8.
-
-  JS引擎主要有两个组件构成：
-
-  - 堆-内存分配发生的地方
-  - 栈-函数调用时会形一个个栈帧（frame）
-
-- GUI渲染线程
-
-- 事件触发线程
-
-
 
