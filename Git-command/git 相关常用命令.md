@@ -49,3 +49,26 @@ git stash clear
 4. 把修改后的本地分支与远程分支关联
 
 `git branch --set-upstream-to origin/newBranch`
+
+
+
+# 和切换分支相关
+
+Git 2.30.0 之上的版本，switch命令则专门用来切换分支、创建并切换分支等
+
+1. 如果foo 分支存在，切换到分支foo
+
+   ```shell
+   git switch foo
+   ```
+
+2. If `foo` does not exist and `origin/foo` exists, try to create `foo` from `origin/foo` and then switch to `foo`:
+
+   ```sh
+   git switch -c foo origin/foo
+   # or simply
+   git switch foo
+   ```
+
+   
+
