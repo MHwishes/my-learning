@@ -189,42 +189,6 @@ var suber = new Sub();
    > **BOM 是为了操作浏览器出现的 API，window 是其的一个对象。**
 
 
-
-
-
-#### 一个DOM绑定多个元素时，先执行冒泡还是捕获？
-
-按照W3C的标准，先发生捕获事件，后发生冒泡事件。**所有事件的顺序是：其他元素捕获阶段事件 -> 本元素代码顺序事件 -> 其他元素冒泡阶段事件 。**
-
-1. 冒泡：冒泡是从下向上，DOM元素绑定的事件被触发时，此时该元素为目标元素，目标元素执行后，它的祖元素绑定的事件会向上顺序执行。
-
-2. 捕获： 捕获则和冒泡相反，目标元素被触发后，会从目标元素的最顶层的祖先元素事件往下执行到目标元素为止。
-
-   
-
-   true：事件句柄在捕获阶段执行；false：默认。事件句柄在冒泡阶段执行
-
-```
-one.addEventListener('click',function(){alert('one');},true);
-two.addEventListener('click',function(){alert('two,bubble');},false);
-two.addEventListener('click',function(){alert('two,capture');},true);
-three.addEventListener('click',function(){alert('three,bubble');},true);
-four.addEventListener('click',function(){alert('four');},true);
-```
-
-结果：
-
-**1、如果two为目标元素，目标元素的同类型事件按顺序执行，而其他元素根据W3C的标准执行，即先捕获后冒泡。**
-
-点击two执行结果：one(因为是two的父元素支持捕获事件所以先执行) two,bubble
-two,capture(顺序执行，注意逗号不是间隔，是输出内容。)
-
-**2、如果目标元素不是two，则two的同类型事件按先捕获后冒泡触发执行，也就是跟前面讨论的执行过程是一样的，只不过两个事件都绑定在同一个DOM元素上。**
-
-点击three执行结果：one  two,capture  three,bubble  two,bubble
-
-
-
 ##  JS 运行机制
 
 1. 首先js 是单线程运行的，在代码执行的时候，通过将不同函数的执行上下文压入执行栈中来保证代码的有序执行。
